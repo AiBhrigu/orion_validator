@@ -1,0 +1,29 @@
+{
+  "canisters": {
+    "orion_validator_backend": {
+      "declarations": {
+        "node_compatibility": true
+      },
+      "main": "src/orion_validator_backend/main.mo",
+      "type": "motoko"
+    },
+    "orion_validator_frontend": {
+      "dependencies": [
+        "orion_validator_backend"
+      ],
+      "source": [
+        "src/orion_validator_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "orion_validator_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
