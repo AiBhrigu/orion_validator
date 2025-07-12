@@ -1,7 +1,6 @@
-kimport Debug "mo:base/Debug";
+import Debug "mo:base/Debug";
 import Principal "mo:base/Principal";
 import Array "mo:base/Array";
-import Nat "mo:base/Nat";
 
 actor ORION_Validator {
 
@@ -20,11 +19,11 @@ actor ORION_Validator {
   stable var outcomes : [Outcome] = [];
 
   public func validate(id : Nat, desc : Text) : async () {
-    let callerPrincipal = msg.caller;
+    let caller = Principal.fromActor(ORION_Validator);
     let newProposal : Proposal = {
       id = id;
       description = desc;
-      creator = callerPrincipal;
+      creator = caller;
     };
     proposals := Array.append(proposals, [newProposal]);
     Debug.print("New Proposal Added: " # desc);
@@ -44,27 +43,24 @@ actor ORION_Validator {
     return outcomes;
   };
 
+  // ✅ New methods example
   public func deleteProposal(id : Nat) : async () {
-    proposals := Array.filter<Proposal>(proposals, func(p) { p.id != id });
-    Debug.print("Proposal Deleted: " # Nat.toText(id));
+    proposals := Array.filter<Proposal>(proposals, func (p) { p.id != id });
+    Debug.print("Proposal Deleted: " # debug_show id);
   };
 
   public func updateProposal(id : Nat, newDesc : Text) : async () {
-    proposals := Array.map<Proposal, Proposal>(
-      proposals,
-      func(p) {
-        if (p.id == id) {
-          { id = p.id; description = newDesc; creator = p.creator }
-        } else {
-          p
-        }
+    proposals := Array.map<Proposal, Proposal>(proposals, func (p) {
+      if (p.id == id) {
+        { id = p.id; description = newDesc; creator = p.creator }
+      } else {
+        p
       }
-    );
-    Debug.print("Proposal Updated: " # Nat.toText(id));
+    });
+    Debug.print("Proposal Updated: " # debug_show id);
   };
 
   public query func filterProposalsByCreator(creator : Principal) : async [Proposal] {
-    return Array.filter<Proposal>(proposals, func(p) { p.creator == creator });
+    Array.filter<Proposal>(proposals, func (p) { p.creator == creator });
   };
 };
-
