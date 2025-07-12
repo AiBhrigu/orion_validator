@@ -1,7 +1,7 @@
-import Debug "mo:base/Debug";
+kimport Debug "mo:base/Debug";
 import Principal "mo:base/Principal";
 import Array "mo:base/Array";
-import Iter "mo:base/Iter";
+import Nat "mo:base/Nat";
 
 actor ORION_Validator {
 
@@ -20,7 +20,7 @@ actor ORION_Validator {
   stable var outcomes : [Outcome] = [];
 
   public func validate(id : Nat, desc : Text) : async () {
-    let callerPrincipal = Principal.fromCaller();
+    let callerPrincipal = msg.caller;
     let newProposal : Proposal = {
       id = id;
       description = desc;
@@ -67,3 +67,4 @@ actor ORION_Validator {
     return Array.filter<Proposal>(proposals, func(p) { p.creator == creator });
   };
 };
+
