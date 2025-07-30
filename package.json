@@ -1,13 +1,10 @@
 {
   "name": "orion_validator",
   "version": "1.0.0",
-  "description": "ORION Validator",
   "scripts": {
     "deploy": "dfx stop && rm -rf .dfx && dfx start --clean --background && dfx deploy",
-    "commit": "git add . && git commit -m '🚀 Auto deploy' && git push"
+    "commit": "git add . && git commit -m '🚀 Auto deploy' && git push",
+    "orion": "npm run deploy && npm run commit"
   },
-  "keywords": [],
-  "author": "Bhrigu",
-  "license": "ISC",
-  "dependencies": {}
+  "devDependencies": {}
 }
