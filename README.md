@@ -1,3 +1,15 @@
+# Historical repository
+
+> **Status:** historical 2025 ICP validator proof-of-concept · preserved for provenance.
+>
+> This repository records an earlier Internet Computer validator experiment that used the **ORION Validator** name. It is **not the current ORION architecture** and does not define ORION, Delta, Frey, Cosmographer, BHRIGU, or the wider Φ Research Systems hierarchy.
+>
+> **Current authority:** [AiBhrigu public system hierarchy](https://github.com/AiBhrigu/AiBhrigu) · [Φ Research Systems](https://www.bhrigu.io/systems?lang=en)
+>
+> Historical code, commits, deployment experiments, and original README material below are intentionally preserved unchanged.
+
+---
+
 # `orion_validator`
 
 Welcome to your new `orion_validator` project and to the Internet Computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
